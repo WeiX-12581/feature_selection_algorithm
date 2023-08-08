@@ -14,13 +14,9 @@ fea = ['f1', 'f2', 'f3', 'f4']
 # features = ['sepallength', 'sepalwidth', 'petallength', 'petalwidth']
 
 for feature in list(data.columns)[0:-1]:
-    # 计算皮尔逊相关系数
     pearson_corr, _ = pearsonr(data[feature], data['class'].astype(float))
-    # 计算斯皮尔曼相关系数
     spearman_corr, _ = spearmanr(data[feature], data['class'].astype(float))
-    # 计算肯德尔秩相关系数
     kendall_corr, _ = kendalltau(data[feature], data['class'].astype(float))
-    # 计算欧几里德距离
     euclidean_dist = euclidean(data[feature], data['class'].astype(float))
     print(
         f'({feature}, class): ({abs(pearson_corr):.4f}, {abs(spearman_corr):.4f}, {abs(euclidean_dist):.4f}, {abs(kendall_corr):.4f}')
